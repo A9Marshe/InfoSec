@@ -1,10 +1,7 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
+## Info
+This is the 2021-2022 first Semseter Repo for InfoSec lab sessions, an index will be added (hopefully)
 ## Folder Structure
 
-The workspace contains two folders by default, where:
 
 - `src`: the folder to maintain sources
 - `lib`: the folder to maintain dependencies
