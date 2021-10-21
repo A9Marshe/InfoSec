@@ -1,6 +1,8 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-       // String t = encrypt("halo",3);
+      
+       AdditiveCipher worker = new AdditiveCipher();
+       System.out.println(worker.encrypt("test"));
     }
 }

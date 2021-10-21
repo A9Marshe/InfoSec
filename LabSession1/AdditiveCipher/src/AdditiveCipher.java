@@ -1,5 +1,3 @@
-
-
 public class AdditiveCipher{
     /**
      * Additive encryption formula:
@@ -10,12 +8,28 @@ public class AdditiveCipher{
      * alphabet: the alphabet used to represent messages and cipherTexts
      * !- This is the Naive approach to additiveCipher😄
      */
-    int k = 3; // default key value (3) is the one used with Caesar Cipher
-    //Modern english alphabet
-    String alphabet = "abcdefghijklmnopqrstuvwxyz";
-
+    private String alphabet;
+    private int key;
     //mod is the length of the alphabet
-    private  final int _mod = alphabet.length() - 1;
+    private  final int _mod;
+
+    //default constructor with predefined alphabet and key
+    AdditiveCipher(){
+        this.alphabet = "abcdefghijklmnopqrstuvwxyz";
+        this.key = 3; // default key value (3) is the one used with Caesar Cipher
+        this._mod = alphabet.length() - 1;
+    }
+
+    AdditiveCipher(String alphabet){
+        this.alphabet = alphabet;
+        this._mod = alphabet.length() - 1;
+    }
+    AdditiveCipher(String alphabet, int key){
+        this.alphabet = alphabet;
+        this.key = key;
+        this._mod = alphabet.length() - 1;
+    }
+
 
     //encoding funtion
     private int[] _encode(String message){
@@ -49,11 +63,11 @@ public class AdditiveCipher{
      * encrypt uses encode and decode functions
      *(message)-> encrypt(message) -> decode(CipherText) 
     */
-    public String encrypt(String message, int key){
+    public String encrypt(String message){
         int[] encodedMessage = _encode(message);
 
         // encyrption formula C = M + k % (alphabet length)
-        for (int i : encodedMessage) i = i + k % _mod;
+        for (int i : encodedMessage) i = (i + key) % _mod;
 
         return _decode(encodedMessage);
     }
@@ -64,11 +78,11 @@ public class AdditiveCipher{
      * c = m - k mod(alphabet.length) (when >0)
      * c = (m - k mod(alphabet.length)) + alphabet.length (when <0)
     */ 
-    public String decrypt(String message, int key){
+    public String decrypt(String message){
         int[] encodedMessage= _encode(message);
         // decyrption formula C = M - k % (alphabet length)
         for (int i : encodedMessage){
-            i = ((i - key % _mod) > 0) ?  i - key % _mod :(i - key % _mod) + _mod; 
+            i = ((i - key % _mod) > 0) ?  (i - key) % _mod :((i - key) % _mod) + _mod; 
         } 
         return _decode(encodedMessage);
     }
