@@ -17,13 +17,9 @@ public class AdditiveCipher{
     //mod is the length of the alphabet
     private  final int _mod = alphabet.length() - 1;
 
-    /** 
-     * encrypt function is used to encrypt a Message,
-     * encrypt uses encode and decode functions
-     *(message)-> encrypt(message) -> decode(CipherText) 
-    */
-    public String encrypt(String message, int key){
-        String res ="";
+    //encode method
+    private int[] encode(String message){
+        //validating characters
         int[] encode = new int[message.length()];
         int index;
         for (int i = 0; i < message.length(); i++) {
@@ -31,9 +27,18 @@ public class AdditiveCipher{
             if (index > 0) encode[i] = index;
             else { System.out.println(message.charAt(i) + " is not included in alphabet");}
         }
-
+        return encode;
+    }
+    /** 
+     * encrypt function is used to encrypt a Message,
+     * encrypt uses encode and decode functions
+     *(message)-> encrypt(message) -> decode(CipherText) 
+    */
+    public String encrypt(String message, int key){
+        String res ="";
+        int[] encodedMessage = encode(message);
         //decoding, from numbers to letters
-        for (int i : encode) {
+        for (int i : encodedMessage) {
             res += alphabet.indexOf(i + key % _mod );
         }
             return res;
