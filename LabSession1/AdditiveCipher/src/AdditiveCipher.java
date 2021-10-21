@@ -17,30 +17,59 @@ public class AdditiveCipher{
     //mod is the length of the alphabet
     private  final int _mod = alphabet.length() - 1;
 
-    //encode method
-    private int[] encode(String message){
+    //encoding funtion
+    private int[] _encode(String message){
         //validating characters
+        int tempIndex = 0;
         int[] encode = new int[message.length()];
         int index;
         for (int i = 0; i < message.length(); i++) {
             index = alphabet.indexOf(message.charAt(i));
-            if (index > 0) encode[i] = index;
+            if (index > 0){
+                encode[tempIndex] = index;
+                i++;
+            } 
             else { System.out.println(message.charAt(i) + " is not included in alphabet");}
         }
         return encode;
     }
+
+    //decoding function
+    private String _decode(int[] encodedMessage){
+        String res = "";
+        for (int i : encodedMessage) {
+            res += alphabet.charAt(i);  
+        }
+        return res;
+
+    }
+
     /** 
      * encrypt function is used to encrypt a Message,
      * encrypt uses encode and decode functions
      *(message)-> encrypt(message) -> decode(CipherText) 
     */
     public String encrypt(String message, int key){
-        String res ="";
-        int[] encodedMessage = encode(message);
-        //decoding, from numbers to letters
-        for (int i : encodedMessage) {
-            res += alphabet.indexOf(i + key % _mod );
-        }
-            return res;
+        int[] encodedMessage = _encode(message);
+
+        // encyrption formula C = M + k % (alphabet length)
+        for (int i : encodedMessage) i = i + k % _mod;
+
+        return _decode(encodedMessage);
+    }
+    
+    
+    /** decryption function
+     *  decyption formula :
+     * c = m - k mod(alphabet.length) (when >0)
+     * c = (m - k mod(alphabet.length)) + alphabet.length (when <0)
+    */ 
+    public String decrypt(String message, int key){
+        int[] encodedMessage= _encode(message);
+        // decyrption formula C = M - k % (alphabet length)
+        for (int i : encodedMessage){
+            i = ((i - key % _mod) > 0) ?  i - key % _mod :(i - key % _mod) + _mod; 
+        } 
+        return _decode(encodedMessage);
     }
 }
