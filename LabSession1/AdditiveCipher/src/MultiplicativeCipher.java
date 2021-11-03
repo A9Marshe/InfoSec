@@ -92,11 +92,14 @@ public class MultiplicativeCipher {
     public String decrypt(String message){
         //calculating inverse key value;
         int kInverse = _inverseKey(_mod, key);
+        if (kInverse != 0){
         int[] encodedMessage= _encode(message);
+
         for (int i = 0; i < encodedMessage.length; i++) {
             encodedMessage[i] =(encodedMessage[i] * kInverse) % _mod;
         }
-       
         return _decode(encodedMessage);
+        }
+        return ("Invalid Key");
     }
 }
