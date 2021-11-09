@@ -22,6 +22,11 @@ public class App {
         //                 //SESSION 3 Vigenere
         // Vigenere viginereWorker = new Vigenere("close");
         // System.out.println(viginereWorker.decrypt(viginereWorker.encrypt("until we meet later")));
+        
+                           //         AutoKey
+        AutoKeyCipher auto = new AutoKeyCipher();
+        //System.out.println(auto.encrypt("seeyou","cat"));
+        System.out.println(auto.decrypt(auto.encrypt("see you", "cat"), "cat"));
     }
 }
 
