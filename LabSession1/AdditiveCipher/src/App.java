@@ -26,7 +26,15 @@ public class App {
                            //         AutoKey
         AutoKeyCipher auto = new AutoKeyCipher();
         //System.out.println(auto.encrypt("seeyou","cat"));
-        System.out.println(auto.decrypt(auto.encrypt("see you", "cat"), "cat"));
+        //System.out.println(auto.decrypt(auto.encrypt("see you", "cat"), "cat"));
+        PlayFairCipherSession temp = new PlayFairCipherSession();
+        String[][] res = temp._ketString("CAT");
+        for (int i = 0; i < res.length; i++) {
+            for (int j = 0; j < res.length; j++) {
+                System.err.print(res[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
 

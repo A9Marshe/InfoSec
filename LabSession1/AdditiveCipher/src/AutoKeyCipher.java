@@ -1,7 +1,4 @@
-import java.sql.PreparedStatement;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
-
+//Session 4
 public class AutoKeyCipher {
      // Ci = (Pi + k) % 26;
      private String alphabet;
