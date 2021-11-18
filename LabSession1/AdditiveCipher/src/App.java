@@ -24,17 +24,18 @@ public class App {
         // System.out.println(viginereWorker.decrypt(viginereWorker.encrypt("until we meet later")));
         
                            //         AutoKey
-        AutoKeyCipher auto = new AutoKeyCipher();
+      //  AutoKeyCipher auto = new AutoKeyCipher();
         //System.out.println(auto.encrypt("seeyou","cat"));
         //System.out.println(auto.decrypt(auto.encrypt("see you", "cat"), "cat"));
-        PlayFairCipherSession temp = new PlayFairCipherSession();
-        String[][] res = temp._ketString("CAT");
-        for (int i = 0; i < res.length; i++) {
-            for (int j = 0; j < res.length; j++) {
-                System.err.print(res[i][j]);
-            }
-            System.out.println();
-        }
+        ///PlayFairCipherSession temp = new PlayFairCipherSession();
+        // String[][] res = temp._ketString("CAT");
+        // for (int i = 0; i < res.length; i++) {
+        //     for (int j = 0; j < res.length; j++) {
+        //         System.err.print(res[i][j]);
+        //     }
+        //     System.out.println();
+        // }
+       
     }
 }
 

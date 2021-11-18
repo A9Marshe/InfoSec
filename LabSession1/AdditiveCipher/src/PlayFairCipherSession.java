@@ -1,4 +1,6 @@
+
 public class PlayFairCipherSession {
+    
     private String _alphabet;
     private String _key;
     private String keyString = "";
