@@ -1,4 +1,3 @@
 bin/
 vscode/
-playFairCipher.java
-playFairCipherSession.java
+src/RC4.java
